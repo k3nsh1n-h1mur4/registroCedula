@@ -1,0 +1,27 @@
+{% extends "bootstrap/base.html" %}
+
+{% block  title %}
+  
+{% endblock  title %}
+
+{% block  navbar %}
+  
+{% endblock  navbar %}
+
+{% block  content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <form action="" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="form-group">
+                        <label for="unidad">Unidad Adscripción a capturar</label>
+                        <input type="text" name="unidad" class="form-control" id="">
+                    </div>
+
+                    <input type="submit" name="unidad" value="Crear" class="btn btn-success">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock  content %}

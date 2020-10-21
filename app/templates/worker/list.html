@@ -1,0 +1,44 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  {{ title }}
+{% endblock title %}
+
+
+{% block navbar %}
+    <div class="container">
+        <a href="{{ url_for('.registerC') }}" class="btn btn-primary">Registrar Nueva Cédula</a>
+    </div>
+{%endblock navbar %}
+    
+
+{% block content %}
+  
+    <div class="container mt-5">
+       <table class="table">
+           <thead>
+               <tr>
+                   <th scope="col">#</th>
+                   <th scope="col">Nombre</th>
+                   <th scope="col">Matrícula</th>
+                   <th scope="col">Turno</th>
+                   <th scope="col">Unidad Adscripción</th>
+               </tr>
+           </thead>
+           <tbody>
+            {% for workers in worker %}
+                <tr>
+                    <td>{{ workers.id }}</td>
+                    <td>{{ workers.name }}</td>
+                    <td>{{ workers.matricula }}</td>
+                    <td>{{ workers.turno }}</td>
+                    <td>{{ workers.unidad }}</td>
+                </tr>
+            {% endfor %}
+           </tbody>
+       </table>
+    </div>
+        
+        
+    
+{% endblock content %}
