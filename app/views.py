@@ -25,7 +25,7 @@ def loader_user(id):
 
 
 
-@page.route('/', methods=['GET', 'POST'])
+@page.route('/index', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         unidad = request.form['unidad']
@@ -85,15 +85,19 @@ def registerC():
         if 'file' not in request.files:
             flash('No hay archivo')
         img = request.files['img']
-        if img.filename == '':
+        img1 = request.files['img1']
+        if img.filename and img1.filename == '':
             flash('No hay nombre de archivo')
         print(img.filename)
+        print(img1.filename)
         filename = secure_filename(img.filename)
+        filename1 = secure_filename(img1.filename)
         mimetype = img.mimetype
+        mimetype1 = img1.mimetype
         
         img.save(os.path.join(app.config['IMAGE_UPLOADS'], img.filename))
-
-        worker = Worker(name=name, matricula=matricula, turno=turno, unidad=unidad, img=img, mimetype=mimetype)
+        img.save(os.path.join(app.config['IMAGE_UPLOADS'], img1.filename))
+        worker = Worker(name=name, matricula=matricula, turno=turno, unidad=unidad, img=img, mimetype=mimetype, img1=img1, mimetype1=mimetype1)
         db.session.add(worker)
         db.session.commit()
         if worker:

@@ -63,6 +63,8 @@ class Worker(db.Model):
 	unidad = db.Column(db.String(90), nullable=False)
 	img = db.Column(db.Text, nullable=False)
 	mimetype = db.Column(db.Text, nullable=False)
+	img1 = db.Column(db.Text, nullable=False)
+	mimetype1 = db.Column(db.Text, nullable=False)
 	created_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
 
